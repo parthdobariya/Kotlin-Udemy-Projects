@@ -85,5 +85,4 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>
