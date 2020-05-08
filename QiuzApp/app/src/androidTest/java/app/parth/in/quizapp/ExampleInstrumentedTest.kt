@@ -1,4 +1,4 @@
-package app.parth.`in`.qiuzapp
+package app.parth.`in`.quizapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,6 +1,5 @@
-package app.parth.`in`.qiuzapp
+package app.parth.`in`.quizapp
 
-import ResultActivity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface

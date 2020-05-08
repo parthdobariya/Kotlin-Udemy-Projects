@@ -1,4 +1,4 @@
-package app.parth.`in`.qiuzapp
+package app.parth.`in`.quizapp
 
 import android.content.Intent
 import android.os.Bundle

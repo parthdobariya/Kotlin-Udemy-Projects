@@ -1,11 +1,10 @@
+package app.parth.`in`.quizapp
 
-
+import Constants
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import app.parth.`in`.qiuzapp.MainActivity
-import app.parth.`in`.qiuzapp.R
 import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {

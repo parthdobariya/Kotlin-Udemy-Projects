@@ -1,6 +1,6 @@
 
-import app.parth.`in`.qiuzapp.Question
-import app.parth.`in`.qiuzapp.R
+import app.parth.`in`.quizapp.Question
+import app.parth.`in`.quizapp.R
 
 object Constants {
     const val USER_NAME: String = "user_name"

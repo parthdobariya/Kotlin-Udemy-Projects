@@ -1,4 +1,4 @@
-package app.parth.`in`.qiuzapp
+package app.parth.`in`.quizapp
 
 import org.junit.Test
 

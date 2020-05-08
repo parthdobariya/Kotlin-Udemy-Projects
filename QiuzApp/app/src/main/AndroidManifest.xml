@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.parth.in.qiuzapp">
+    package="app.parth.in.quizapp">
 
     <application
         android:allowBackup="true"
@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".QuizQuestionsActivity"
+            android:name="app.parth.in.quizapp.QuizQuestionsActivity"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="app.parth.in.quizapp.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize">

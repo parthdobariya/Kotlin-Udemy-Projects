@@ -1,4 +1,4 @@
-package app.parth.`in`.qiuzapp
+package app.parth.`in`.quizapp
 
 data class Question(
     val id: Int,
