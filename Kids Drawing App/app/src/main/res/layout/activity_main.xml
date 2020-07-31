@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -10,6 +11,8 @@
        android:id="@+id/drawing_view"
        android:layout_width="0dp"
        android:layout_height="0dp"
+       android:layout_margin="5dp"
+       android:background="@drawable/background_drawing_view_layout"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintLeft_toLeftOf="parent"
