@@ -2,16 +2,29 @@ package app.parth.`in`.kidsdrawingapp
 
 import android.app.Dialog
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var mImageButtonCurrentPaint: ImageButton? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         drawing_view.setSizeForBrush(20.toFloat())
+        mImageButtonCurrentPaint = ll_paint_colours[2] as ImageButton
+        mImageButtonCurrentPaint!!.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.pallet_pressed
+            )
+        )
 
         ib_brush.setOnClickListener {
             showBrushSizeChooserDialog()
