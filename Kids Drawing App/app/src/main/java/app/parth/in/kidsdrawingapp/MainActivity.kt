@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         drawing_view.setSizeForBrush(20.toFloat())
-        mImageButtonCurrentPaint = ll_paint_colours[2] as ImageButton
+        mImageButtonCurrentPaint = ll_paint_colors[2] as ImageButton
         mImageButtonCurrentPaint!!.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
