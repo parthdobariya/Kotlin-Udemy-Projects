@@ -1,9 +1,12 @@
 package app.parth.`in`.kidsdrawingapp
 
 import android.Manifest
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
@@ -42,10 +45,42 @@ class MainActivity : AppCompatActivity() {
 
             if (isReadStorageAllowed()) {
 
+                val pickPhotoIntent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+                startActivityForResult(pickPhotoIntent, GALLERY)
+
             } else {
 
-                requestStoragePermission()
+                requestStoragePermission()  
             }
+        }
+        ib_undo.setOnClickListener {
+            drawing_view.onClickUndo()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Activity.RESULT_OK) {
+            if (requestCode == GALLERY) {
+                try {
+                    if (data!!.data != null) {
+                        iv_background.visibility = View.VISIBLE
+                        iv_background.setImageURI(data.data)
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Error in parsing the image or its corrupted.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
         }
     }
 
@@ -145,6 +180,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val STORAGE_PERMISSION_CODE = 1
+        private const val GALLERY = 2
 
     }
 }
