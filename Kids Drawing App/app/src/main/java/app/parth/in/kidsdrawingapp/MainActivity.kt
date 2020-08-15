@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.media.MediaScannerConnection
 import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
@@ -261,8 +262,21 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
+            MediaScannerConnection.scanFile(this@MainActivity, arrayOf(result), null) { path, uri ->
+                val shareIntent = Intent()
+                shareIntent.action = Intent.ACTION_SEND
+                shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
+                shareIntent.type = "image/png"
 
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent,
+                        "Share"
+                    )
+                )
+            }
+        }
+ 
         private fun showProgressDialog() {
             mProggressDialog = Dialog(this@MainActivity)
             mProggressDialog.setContentView(R.layout.dialog_custom_progress)
