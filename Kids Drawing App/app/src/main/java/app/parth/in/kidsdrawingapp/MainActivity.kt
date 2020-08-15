@@ -211,7 +211,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class BitmapAsyncTask(val mBitmap: Bitmap) : AsyncTask<Any, Void, String>() {
+
+        private lateinit var mProggressDialog: Dialog
+        override fun onPreExecute() {
+            super.onPreExecute()
+            showProgressDialog()
+        }
+
         override fun doInBackground(vararg params: Any?): String {
+
             var result = ""
 
             if (mBitmap != null) {
@@ -239,6 +247,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
+            cancelProgressDialog()
             if (!result!!.isEmpty()) {
                 Toast.makeText(
                     this@MainActivity,
@@ -254,6 +263,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        private fun showProgressDialog() {
+            mProggressDialog = Dialog(this@MainActivity)
+            mProggressDialog.setContentView(R.layout.dialog_custom_progress)
+            mProggressDialog.show()
+        }
+
+        private fun cancelProgressDialog() {
+            mProggressDialog.dismiss()
+        }
     }
 
     companion object {
