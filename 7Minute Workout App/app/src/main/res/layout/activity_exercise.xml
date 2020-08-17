@@ -34,7 +34,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/item_circuler_color_accent_border">
+            android:background="@drawable/item_circular_color_accent_border">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -42,11 +42,11 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:background="@drawable/circuler_progress_gray"
+                android:background="@drawable/circular_progress_gray"
                 android:indeterminate="false"
                 android:max="10"
                 android:progress="100"
-                android:progressDrawable="@drawable/item_progress_bar"
+                android:progressDrawable="@drawable/circular_progress_bar"
                 android:rotation="-90" />
 
             <LinearLayout
