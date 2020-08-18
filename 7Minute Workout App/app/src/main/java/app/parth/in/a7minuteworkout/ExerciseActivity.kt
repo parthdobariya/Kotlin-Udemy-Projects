@@ -5,7 +5,9 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sevenminuteworkout.Constants
 import kotlinx.android.synthetic.main.activity_exercise.*
+import java.util.ArrayList
 
 class ExerciseActivity : AppCompatActivity() {
 
@@ -15,6 +17,9 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProcess = 0
     private var exerciseTimerDuration: Long = 30
+
+    private var exerciseList:ArrayList<ExerciseModel>? =null
+    private var currentExercisePosition=-1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +33,8 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         setupRestView()
+
+        exerciseList=Constants.defaultExerciseList()
 
         llRestView.visibility
     }
@@ -51,6 +58,8 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+
+                currentExercisePosition++
                 setupExerciseView()
             }
         }.start()
