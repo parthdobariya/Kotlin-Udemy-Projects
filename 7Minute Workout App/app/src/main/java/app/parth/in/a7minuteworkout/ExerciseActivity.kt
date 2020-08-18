@@ -2,6 +2,7 @@ package app.parth.`in`.a7minuteworkout
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_exercise.*
@@ -10,6 +11,10 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var restTimer: CountDownTimer? = null
     private var restProcess = 0
+
+    private var exerciseTimer: CountDownTimer? = null
+    private var exerciseProcess = 0
+    private var exerciseTimerDuration: Long = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +28,12 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         setupRestView()
+
+        llRestView.visibility
     }
 
     override fun onDestroy() {
-        if (restTimer !=  null) {
+        if (restTimer != null) {
             restTimer!!.cancel()
             restProcess = 0
         }
@@ -44,14 +51,41 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                setupExerciseView()
+            }
+        }.start()
+    }
+
+    private fun setExerciseProgressBar() {
+        progressBarExercise.progress = exerciseProcess
+        exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                exerciseProcess++
+                progressBarExercise.progress = exerciseTimerDuration.toInt() - exerciseProcess
+                tvExerciseTimer.text = (exerciseTimerDuration.toInt() - exerciseProcess).toString()
+            }
+
+            override fun onFinish() {
                 Toast.makeText(
                     this@ExerciseActivity,
-                    "Hear now we will start the exercise",
+                    "Hear we will start the nest rest screen.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }.start()
     }
+
+    private fun setupExerciseView() {
+        llRestView.visibility = View.GONE
+        llExerciseView.visibility = View.VISIBLE
+
+        if (exerciseTimer != null) {
+            exerciseTimer!!.cancel()
+            exerciseProcess = 0
+        }
+        setExerciseProgressBar()
+    }
+
     private fun setupRestView() {
         if (restTimer != null) {
             restTimer!!.cancel()
