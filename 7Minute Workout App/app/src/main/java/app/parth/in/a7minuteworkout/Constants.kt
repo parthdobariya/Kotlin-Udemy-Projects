@@ -1,4 +1,3 @@
-package com.sevenminuteworkout
 
 import app.parth.`in`.a7minuteworkout.ExerciseModel
 import app.parth.`in`.a7minuteworkout.R

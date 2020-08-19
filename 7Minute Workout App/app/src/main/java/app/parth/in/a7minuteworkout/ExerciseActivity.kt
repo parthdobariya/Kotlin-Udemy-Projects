@@ -1,11 +1,11 @@
 package app.parth.`in`.a7minuteworkout
 
+import Constants
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.sevenminuteworkout.Constants
 import kotlinx.android.synthetic.main.activity_exercise.*
 import java.util.*
 
@@ -16,7 +16,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProcess = 0
-    private var exerciseTimerDuration: Long = 30
+    private var exerciseTimerDuration: Long = 3
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
@@ -32,9 +32,9 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        setupRestView()
-
         exerciseList = Constants.defaultExerciseList()
+
+        setupRestView()
 
         llRestView.visibility
     }
@@ -113,7 +113,10 @@ class ExerciseActivity : AppCompatActivity() {
             restTimer!!.cancel()
             restProcess = 0
         }
+        tvUpcomingExerciseName.text = exerciseList!![currentExercisePosition + 1].getName()
+
         setRestProgressBar()
+
     }
 
 }
