@@ -1,6 +1,7 @@
 package app.parth.`in`.a7minuteworkout
 
 import Constants
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
@@ -24,6 +25,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentExercisePosition = -1
 
     private var tts: TextToSpeech? = null
+
+    private var player: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +61,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (tts != null) {
             tts!!.stop()
             tts!!.shutdown()
+        }
+        if (player != null) {
+            player!!.stop()
         }
         super.onDestroy()
 
@@ -122,6 +128,14 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun setupRestView() {
+        try {
+            player = MediaPlayer.create(applicationContext, R.raw.press_start)
+            player!!.isLooping = false
+            player!!.start()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         llRestView.visibility = View.VISIBLE
         llExerciseView.visibility = View.GONE
