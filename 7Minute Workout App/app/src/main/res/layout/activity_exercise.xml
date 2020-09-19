@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".ExerciseActivity"
-    android:background="@color/colorWhite">
+    tools:context=".ExerciseActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_exercise_activity"
@@ -17,8 +17,8 @@
         android:id="@+id/llRestView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_exercise_activity"
         android:layout_above="@+id/rvExerciseStatus"
+        android:layout_below="@id/toolbar_exercise_activity"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible"
@@ -74,16 +74,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="UPCOMING EXERCISE : "
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/tvUpcomingExerciseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:text="ExerciseName"
             android:textColor="@color/colorAccent"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:text="ExerciseName"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -96,7 +97,7 @@
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible">
-        
+
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="match_parent"
@@ -104,7 +105,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_jumping_jacks"/>
+            android:src="@drawable/ic_jumping_jacks" />
 
         <TextView
             android:id="@+id/tvExerciseName"
@@ -118,8 +119,8 @@
         <FrameLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="42dp"
             android:background="@drawable/item_circular_color_accent_border">
 
             <ProgressBar
@@ -153,11 +154,12 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvExerciseStatus"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true"
-    android:layout_margin="5dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExerciseStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp" />
 </RelativeLayout>
