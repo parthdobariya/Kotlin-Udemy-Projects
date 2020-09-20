@@ -2,7 +2,6 @@ package app.parth.`in`.a7minuteworkout
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -11,7 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         llStart.setOnClickListener {
-            val intent=Intent(this,ExerciseActivity::class.java)
+            val intent = Intent(this, ExerciseActivity::class.java)
+            startActivity(intent)
+        }
+
+        llBMI.setOnClickListener {
+            val intent = Intent(this, BMIActivity::class.java)
             startActivity(intent)
         }
 
