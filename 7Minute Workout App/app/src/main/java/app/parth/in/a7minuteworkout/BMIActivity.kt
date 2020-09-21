@@ -1,11 +1,10 @@
 package app.parth.`in`.a7minuteworkout
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_b_m_i.*
-import kotlinx.android.synthetic.main.activity_finish.*
 import java.math.BigDecimal
 import java.math.RoundingMode
 
