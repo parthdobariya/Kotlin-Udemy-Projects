@@ -154,7 +154,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-        
+
         <LinearLayout
             android:id="@+id/llDisplayBIMResult"
             android:layout_width="match_parent"
