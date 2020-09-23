@@ -1,7 +1,6 @@
 package app.parth.`in`.a7minuteworkout
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,25 +27,25 @@ class HistoryActivity : AppCompatActivity() {
 
     private fun getAllCompletedDates() {
         val dbHandler = SqliteOpenHelper(this, null)
-       val allCompletedDatesList= dbHandler.getAllCompletedDatesList()
+        val allCompletedDatesList = dbHandler.getAllCompletedDatesList()
 
-        if(allCompletedDatesList.size>0){
-            tvHistory.visibility= View.VISIBLE
-            rvHistory.visibility= View.VISIBLE
-            tvNoDataAvailable.visibility= View.GONE
+        if (allCompletedDatesList.size > 0) {
+            tvHistory.visibility = View.VISIBLE
+            rvHistory.visibility = View.VISIBLE
+            tvNoDataAvailable.visibility = View.GONE
 
-            rvHistory.layoutManager=LinearLayoutManager(this)
-            val HistoryAdapter=HistoryAdapter(this,allCompletedDatesList)
-            rvHistory.adapter=HistoryAdapter
-        }else{
-            tvHistory.visibility= View.GONE
-            rvHistory.visibility= View.GONE
-            tvNoDataAvailable.visibility= View.VISIBLE
+            rvHistory.layoutManager = LinearLayoutManager(this)
+            val historyAdapter = HistoryAdapter(this, allCompletedDatesList)
+            rvHistory.adapter = historyAdapter
+        } else {
+            tvHistory.visibility = View.GONE
+            rvHistory.visibility = View.GONE
+            tvNoDataAvailable.visibility = View.VISIBLE
         }
 
-      /*  for (i in allCompletedDatesList ){
-             Log.i("Date HistoryActivity",""+i)
-        }
-*/
+        /*  for (i in allCompletedDatesList ){
+               Log.i("Date HistoryActivity",""+i)
+          }
+  */
     }
 }

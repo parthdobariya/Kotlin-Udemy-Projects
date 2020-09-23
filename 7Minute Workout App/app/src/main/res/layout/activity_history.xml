@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="EXERCISE COMPLETED"
+            android:text="@string/exercise_completed"
             android:textSize="18sp"
             android:visibility="gone"
             tools:visibility="visible" />
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="NO DATA AVAILABLE"
+            android:text="@string/no_data_available"
             android:textColor="#212121"
             android:textSize="18sp"
             android:visibility="visible"

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_history_row.view.*
 
-class HistoryAdapter(val context: Context, val items: ArrayList<String>) :
+class HistoryAdapter(private val context: Context, private val items: ArrayList<String>) :
     RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
 
@@ -24,7 +24,7 @@ class HistoryAdapter(val context: Context, val items: ArrayList<String>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val date: String = items.get(position)
+        val date: String = items[position]
 
         holder.tvPosition.text = (position + 1).toString()
         holder.tvItem.text = date

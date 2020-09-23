@@ -30,7 +30,7 @@
             android:button="@null"
             android:checked="true"
             android:gravity="center"
-            android:text="METRIC UNITS"
+            android:text="@string/metric_units"
             android:textColor="@drawable/drawable_units_tab_text_color_selector"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -44,7 +44,7 @@
             android:button="@null"
             android:checked="false"
             android:gravity="center"
-            android:text="US UNITS"
+            android:text="@string/us_units"
             android:textColor="@drawable/drawable_units_tab_text_color_selector"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -68,7 +68,7 @@
                 android:id="@+id/etMetricUnitWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="WEIGHT(in kg)"
+                android:hint="@string/weight_in_kg"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/etMetricUnitHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="HEIGHT(in cm)"
+                android:hint="@string/height_in_cm"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
 
@@ -103,7 +103,7 @@
                 android:id="@+id/etUsUnitWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="WEIGHT(in lbs)"
+                android:hint="@string/weight_in_lbs"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
 
@@ -129,7 +129,7 @@
                     android:id="@+id/etUsUnitHeightFeet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Feet"
+                    android:hint="@string/feet"
                     android:inputType="number"
                     android:textSize="16sp" />
 
@@ -147,7 +147,7 @@
                     android:id="@+id/etUsUnitHeightInch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Inch"
+                    android:hint="@string/inch"
                     android:inputType="number"
                     android:textSize="16sp" />
 
@@ -169,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Your BMI"
+                android:text="@string/your_bmi"
                 android:textAllCaps="true"
                 android:textSize="16sp" />
 
@@ -209,7 +209,7 @@
             android:layout_gravity="bottom"
             android:layout_marginTop="36dp"
             android:background="@color/colorAccent"
-            android:text="CALCULATE"
+            android:text="@string/calculate"
             android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 

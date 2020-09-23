@@ -1,6 +1,5 @@
 package app.parth.`in`.a7minuteworkout
 
-import Constants
 import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer

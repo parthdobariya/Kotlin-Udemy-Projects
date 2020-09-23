@@ -10,10 +10,10 @@ import java.math.RoundingMode
 
 class BMIActivity : AppCompatActivity() {
 
-    val METRIC_UNITS_VIEW = "METRIC_UNITS_VIEW"
-    val US_UNITS_VIEW = "US_UNITS_VIEW"
+     val METRIC_UNITS_VIEW = "METRIC_UNITS_VIEW"
+     val US_UNITS_VIEW = "US_UNITS_VIEW"
 
-    var currentVisibleView: String = METRIC_UNITS_VIEW
+    private var currentVisibleView: String = METRIC_UNITS_VIEW
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class BMIActivity : AppCompatActivity() {
 
         btnCalculateUnit.setOnClickListener {
 
-            if (currentVisibleView.equals(METRIC_UNITS_VIEW)) {
+            if (currentVisibleView == METRIC_UNITS_VIEW) {
                 if (validateMetricUnits()) {
 
                     val heightValue: Float = etMetricUnitHeight.text.toString().toFloat() / 100
@@ -159,10 +159,7 @@ class BMIActivity : AppCompatActivity() {
         ) {
             bmiLabel = "Normal"
             bmiDescription = "Congratulations! You are in a good shape!"
-        } else if (java.lang.Float.compare(bmi, 25f) > 0 && java.lang.Float.compare(
-                bmi,
-                30f
-            ) <= 0
+        } else if (bmi.compareTo(25f) > 0 && bmi.compareTo(30f) <= 0
         ) {
             bmiLabel = "Overweight"
             bmiDescription = "Oops! You really need to take care of your yourself! Workout maybe!"

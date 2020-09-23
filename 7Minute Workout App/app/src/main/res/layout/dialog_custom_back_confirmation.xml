@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="are you sure?"
+        android:text="@string/are_you_sure"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -22,7 +22,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:gravity="center"
-        android:text="This will stop your work out. You have come this far,are you sure you want to quit?"
+        android:text="@string/this_will_stop_your_work_out_you_have_come_this_far_are_you_sure_you_want_to_quit"
         android:textColor="#212121"
         android:textSize="16sp" />
 
@@ -41,7 +41,7 @@
             android:background="@color/colorAccent"
             android:gravity="center"
             android:padding="8dp"
-            android:text="YES"
+            android:text="@string/yes"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 
@@ -54,7 +54,7 @@
             android:background="@color/colorAccent"
             android:gravity="center"
             android:padding="8dp"
-            android:text="NO"
+            android:text="@string/no"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 

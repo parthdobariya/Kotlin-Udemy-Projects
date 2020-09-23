@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="END"
+        android:text="@string/end"
         android:textColor="@color/colorAccent"
         android:textSize="35sp" />
 
@@ -41,14 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Congratulations!"
+        android:text="@string/congratulations"
         android:textColor="#212121"
         android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You have done the workout!"
+        android:text="@string/you_have_done_the_workout"
         android:textColor="#212121"
         android:textSize="18sp" />
 
@@ -59,7 +59,7 @@
         android:layout_gravity="bottom"
         android:layout_marginTop="35dp"
         android:background="@color/colorAccent"
-        android:text="FINISH"
+        android:text="@string/finish"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 

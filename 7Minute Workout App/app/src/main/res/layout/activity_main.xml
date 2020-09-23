@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="START"
+            android:text="@string/start"
             android:textColor="@color/colorPrimary"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BMI"
+                    android:text="@string/bmi"
                     android:textColor="#FFFFFF"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Calculator"
+                android:text="@string/calculator"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="History"
+                android:text="@string/history"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textStyle="bold" />
