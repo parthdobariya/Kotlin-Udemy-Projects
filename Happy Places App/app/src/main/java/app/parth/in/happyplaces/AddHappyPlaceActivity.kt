@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -20,7 +22,10 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_add_happy_place.*
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,7 +48,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         dateSetListener =
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -74,10 +79,10 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                     arrayOf("Select photo from gallery", "Capture photo from camera")
                 pictureDialog.setItems(
                     pictureDialogItems
-                ) { dialog, which ->
+                ) { _, which ->
                     when (which) {
                         0 -> choosePhotoFromGallery()
-                        1 -> takePhotoFromCamera() 
+                        1 -> takePhotoFromCamera()
                     }
                 }
                 pictureDialog.show()
@@ -96,6 +101,8 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                         val selectedImageBitmap =
                             MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
 
+                    val saveImageToInInternalStorage = saveImageToInInternalStorage(selectedImageBitmap)
+                        Log.e("saved image:","path ::$saveImageToInInternalStorage")
                         iv_place_image!!.setImageBitmap(selectedImageBitmap)
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -103,10 +110,11 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                             .show()
                     }
                 }
-                // TODO (Step 7: Camera result will be received here.)
             } else if (requestCode == CAMERA) {
 
                 val thumbnail: Bitmap = data!!.extras!!.get("data") as Bitmap
+                val saveImageToInInternalStorage = saveImageToInInternalStorage(thumbnail )
+                Log.e("saved image:","path ::$saveImageToInInternalStorage")
                 iv_place_image!!.setImageBitmap(thumbnail)
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -195,15 +203,31 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                     e.printStackTrace()
                 }
             }
-            .setNegativeButton("Cancel") { dialog,
-                                           _ ->
+            .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }.show()
+    }
+
+    private fun saveImageToInInternalStorage(bitmap: Bitmap): Uri {
+        val wrapper = ContextWrapper(applicationContext)
+        var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+        file = File(file, "${UUID.randomUUID()}.jpg")
+
+        try {
+            val stream: OutputStream = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return Uri.parse(file.absolutePath)
     }
 
     companion object {
         private const val GALLERY = 1
 
         private const val CAMERA = 2
+        private const val IMAGE_DIRECTORY = "HappyPlacesImages"
     }
 }
