@@ -6,14 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.parth.`in`.happyplaces.R
 import app.parth.`in`.happyplaces.adaptor.HappyPlacesAdapter
 import app.parth.`in`.happyplaces.database.DatabaseHandler
 import app.parth.`in`.happyplaces.models.HappyPlaceModel
+import app.parth.`in`.happyplaces.utils.SwipeToEditCallback
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +26,23 @@ class MainActivity : AppCompatActivity() {
 
         fabAddHappyPlace.setOnClickListener {
             val intent = Intent(this@MainActivity, AddHappyPlaceActivity::class.java)
+
             startActivityForResult(intent, ADD_PLACE_ACTIVITY_REQUEST_CODE)
         }
 
         getHappyPlacesListFromLocalDB()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ADD_PLACE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                getHappyPlacesListFromLocalDB()
+            } else {
+                Log.e("Activity", "Cancelled or Back Pressed")
+            }
+        }
     }
 
     private fun getHappyPlacesListFromLocalDB() {
@@ -44,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupHappyPlacesRecyclerView(happyPlacesList: ArrayList<HappyPlaceModel>) {
 
         rv_happy_places_list.layoutManager = LinearLayoutManager(this)
@@ -53,29 +69,31 @@ class MainActivity : AppCompatActivity() {
         val placesAdapter = HappyPlacesAdapter(this, happyPlacesList)
         rv_happy_places_list.adapter = placesAdapter
 
-        placesAdapter.setOnClickListener(object : HappyPlacesAdapter.OnClickListener {
+        placesAdapter.setOnClickListener(object :
+            HappyPlacesAdapter.OnClickListener {
             override fun onClick(position: Int, model: HappyPlaceModel) {
                 val intent = Intent(this@MainActivity, HappyPlaceDetailsActivity::class.java)
                 intent.putExtra(EXTRA_PLACE_DETAILS, model)
                 startActivity(intent)
             }
         })
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_PLACE_ACTIVITY_REQUEST_CODE) {
-            if (requestCode == Activity.RESULT_OK) {
-                getHappyPlacesListFromLocalDB()
-            } else {
-                Log.e("Activity", "Canceled or BackPressed")
+        val editSwipeHandler = object : SwipeToEditCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = rv_happy_places_list.adapter as HappyPlacesAdapter
+                adapter.notifyEditItem(
+                    this@MainActivity,
+                    viewHolder.adapterPosition,
+                    ADD_PLACE_ACTIVITY_REQUEST_CODE
+                )
             }
-
         }
+        val editItemTouchHelper = ItemTouchHelper(editSwipeHandler)
+        editItemTouchHelper.attachToRecyclerView(rv_happy_places_list)
     }
 
     companion object {
-        var ADD_PLACE_ACTIVITY_REQUEST_CODE = 1
-        var EXTRA_PLACE_DETAILS = "extra_place_details"
+        private const val ADD_PLACE_ACTIVITY_REQUEST_CODE = 1
+        internal const val EXTRA_PLACE_DETAILS = "extra_place_details"
     }
 }
