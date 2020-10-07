@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_happy_place.view.*
 
 open class HappyPlacesAdapter(
     private val context: Context,
-    private var list: ArrayList<HappyPlaceModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var list: ArrayList<HappyPlaceModel>
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var onClickListener: OnClickListener? = null
 
@@ -39,10 +40,10 @@ open class HappyPlacesAdapter(
             holder.itemView.tvTitle.text = model.title
             holder.itemView.tvDescription.text = model.description
 
-            holder.itemView.setOnClickListener{
-                 if (onClickListener!=null){
-                     onClickListener!!.onClick(position,model)
-                 }
+            holder.itemView.setOnClickListener {
+                if (onClickListener != null) {
+                    onClickListener!!.onClick(position, model)
+                }
             }
         }
     }
